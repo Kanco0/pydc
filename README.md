@@ -55,11 +55,15 @@ using it with only the string colunms well grant to make next data analysis affi
 also I added for the values such as Price per unit, Total Spent, Quantity [.round2] for it well make it consume less token in the future
 Saving : 
 I used df.to_csv() to save the work I just did
+<h2 align="center">DIRTY DATA</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Kanco0/pydc/main/dc1/dirtydata.png" width="45%">
-  <img src="https://raw.githubusercontent.com/Kanco0/pydc/main/dc1/cleaneddata.png" width="45%">
+  <img src="https://raw.githubusercontent.com/Kanco0/pydc/main/dc1/dirtydata.png" width="60%">
 </p>
 
+<h2 align="center">CLEANED DATA</h2>
 <p align="center">
-  Left: Raw Data | Right: Cleaned Data
+  <img src="https://raw.githubusercontent.com/Kanco0/pydc/main/dc1/cleaneddata.png" width="60%">
 </p>
+
+
+
