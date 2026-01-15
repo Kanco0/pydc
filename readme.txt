@@ -52,6 +52,8 @@ this made sense because there is not spelling mistakes but there is another mist
 by that I just did what every one have to do if they have such a simple machine from data, and is it to use global.replace
 for its we know that we have 2 same purpose words wich are (ERROR, UNKNOWN)
 using it with only the string colunms well grant to make next data analysis affictive. 
+
 also I added for the values such as Price per unit, Total Spent, Quantity [.round2] for it well make it consume less token in the future
 Saving : 
+
 I used df.to_csv() to save the work I just did
