@@ -43,25 +43,15 @@ the re.sub tells py whenever you find a lot of empty space change it with 1 spac
 
 Finnaly .strip() comes in the end as it cleans and delete any space in the start or the end of the text.
 
-Misspelling correction:
-
-First, I used the TextBlob library with from textblob import TextBlob, as it is a really effective and fast way to handle spelling correction.
-I used unique() to reduce repeated processing and improve performance.
-Using correction_map, I created an empty dictionary.
-
-The loop and if statement are used because TextBlob sometimes changes business spellings into standard English words; by using this logic, I protected the data from unwanted changes.
-
-For TextBlob role, I applied it only to words that were not on the protection list, such as coffee or salad, so they go to the else condition. There, TextBlob compares the word to the English dictionary and auto-corrects it.
-
-For the last step, I used .map(). Instead of processing the data line by line, I applied the correction map (dictionary) directly to the Item column.
-
-global fix:
-
-Merging variations such as "ERROR", "Unknown", and "UNKNOWN". All of them represent missing values but with different names. By converting them all to "Unknown", I merged these variations, which makes later analysis more accurate and consistent.
-
-Correction of business logic: the word "Take" may be grammatically correct, but in cafe systems the correct term used is "Takeaway". This change ensures that the Location and Item columns stay safe from TextBlob over-correction.
-
-'df.replace(global_fixes)' is used to scan the entire CSV across all columns and rows. If an identical value is found, it is replaced with the mapped value. This approach is faster and cleaner than using multiple if/else conditions.
-
+final touches :
+After I used the library of TextBlob it appeared its kinda stupid in a look a like situation 
+in the first place, I don't even need it. because after I used  
+'for item in sorted(unique_items):
+    print(item)'
+this made sense because there is not spelling mistakes but there is another mistakes such as duplicates and lower cases I could see this as UNKNOWN and Unknown appeared twice, the system is so sensitive to lower and upper cases.
+by that I just did what every one have to do if they have such a simple machine from data, and is it to use global.replace
+for its we know that we have 2 same purpose words wich are (ERROR, UNKNOWN)
+using it with only the string colunms well grant to make next data analysis affictive. 
+also I added for the values such as Price per unit, Total Spent, Quantity [.round2] for it well make it consume less token in the future
 Saving : 
 I used df.to_csv() to save the work I just did
