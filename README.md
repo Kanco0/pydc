@@ -30,8 +30,8 @@ missing Date :
 For Transaction Date, I used ffill(). This method copies the previous valid date into the next missing row. For example, if transaction 100 happened on the 12th, transaction 101 is assumed to be on the same date.
 I sorted the dataset by Transaction ID before applying this method to ensure the dates follow a logical order.
 
-<center>------------------------------------------------------------------------------------------
-</center><br>
+<h3 align="center">-------------------------------</h3>
+
 -DATE: 2026-01-15
 
 cleaning extra space :
