@@ -59,9 +59,11 @@ Saving :
 I used df.to_csv() to save the work I just did
 
 <p align="center">
-  <img src="./dc1/dirtydata.png" width="45%" />
-  <img src="./dc1/cleaneddata.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/Kanco0/pydc/main/dc1/dirtydata.png" width="45%">
+  <img src="https://raw.githubusercontent.com/Kanco0/pydc/main/dc1/cleaneddata.png" width="45%">
 </p>
+
 <p align="center">
-  <em>Left: Raw Data | Right: Cleaned Data</em>
+  Left: Raw Data | Right: Cleaned Data
 </p>
+
