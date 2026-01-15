@@ -57,3 +57,12 @@ also I added for the values such as Price per unit, Total Spent, Quantity [.roun
 Saving : 
 
 I used df.to_csv() to save the work I just did
+
+### 📊 Data Transformation: Before & After
+
+**Raw Dirty Data:**
+![Dirty Data](./dc1/dirtydata.png)
+
+**Cleaned & Processed Data:**
+![Cleaned Data](./dc1/cleaneddata.png)
+
