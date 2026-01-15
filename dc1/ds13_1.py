@@ -2,7 +2,6 @@
 import pandas as pd
 import os 
 import re
-from textblob import TextBlob
 
 c_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(c_dir, 'dirty_cafe_sales.csv')
@@ -35,32 +34,27 @@ def clean_text(text):
 df['Item'] = df['Item'].apply(clean_text)
 df['Location'] = df['Location'].apply(clean_text)
 
-unique_items = df['Item'].unique()
-correction_map = {}
-
-for item in unique_items:
-    item_str = str(item)
-    if "take" in item_str.lower() or "unknown" in item_str.lower() or "unregistered" in item_str.lower():
-        correction_map[item] = item
-    else:
-        correction_map[item] = str(TextBlob(item_str).correct())
-df['Item'] = df['Item'].map(correction_map)
-
-global_fixes = {
-    'Take': 'Takeaway',
-    'Registered': 'Unknown',
-    'Unregistered': 'Unknown',
-    'ERROR': 'Unknown',
-    'UNKNOWN': 'Unknown',
-    'Unkown': 'Unknown'
-}
-df = df.replace(global_fixes)
 
 df['Price Per Unit'] = df['Price Per Unit'].round(2)
 df['Total Spent'] = df['Total Spent'].round(2)
 df['Quantity'] = df['Quantity'].round(2)
 df = df.reset_index(drop=True)
 
+garbage_values = ['ERROR', 'UNKNOWN', 'Unkown', 'unregistered', 'Registered']
+
+df['Item'] = df['Item'].replace(garbage_values, 'Unknown')
+
+df['Location'] = df['Location'].replace(garbage_values, 'Unknown')
+df['Payment Method'] = df['Payment Method'].replace(garbage_values, 'Unknown')
+
+unique_items = df['Item'].unique()
+
+global_fixes = {
+    'ERROR': 'Unknown',
+    'UNKNOWN': 'Unknown',
+}
+target_cols = ['Location', 'Payment Method', 'Item']
+df[target_cols] = df[target_cols].replace(global_fixes)
 print(df)
 print("---list columns----")
 print("---check data---")
@@ -72,5 +66,7 @@ print("---duplicates---")
 print(f"Total Duplicates: {df.duplicated().sum()}")
 print("--- Unique Items Found ---")
 print(df['Item'].unique())
+print("--- قائمة الأصناف الموجودة في عمود Item ---")
+for item in sorted(unique_items):
+    print(item)
 df.to_csv('cleaned_cafe_sales_data.csv', index=False)
-# %%
