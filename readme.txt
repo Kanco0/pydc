@@ -59,4 +59,6 @@ Saving :
 I used df.to_csv() to save the work I just did
 
 ![Dirty Data](dc1/dirtydata.png)
+
 ![Cleaned Data](dc1/cleaneddata.png)
+
