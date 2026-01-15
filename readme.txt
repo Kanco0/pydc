@@ -61,8 +61,8 @@ I used df.to_csv() to save the work I just did
 ### 📊 Data Transformation: Before & After
 
 **Raw Dirty Data:**
-![Dirty Data](./dc1/dirtydata.png)
+<img src="dc1/dirtydata.png" width="800">
 
 **Cleaned & Processed Data:**
-![Cleaned Data](./dc1/cleaneddata.png)
+<img src="dc1/cleaneddata.png" width="800">
 
