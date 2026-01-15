@@ -1,18 +1,20 @@
 # %%
 import pandas as pd
 import os 
+import re
+from textblob import TextBlob
+
 c_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(c_dir, 'dirty_cafe_sales.csv')
 df = pd.read_csv(file_path)
 df = df.fillna({
-    "Location": "Unkown",
-    "Payment Method": "Unkown",
-    "Item": "Unregistered"
+    "Location": "Unknown",
+    "Payment Method": "Unknown",
+    "Item": "Unknown"
     })
 df['Quantity'] = pd.to_numeric(df['Quantity'], errors='coerce')
 df['Price Per Unit'] = pd.to_numeric(df['Price Per Unit'], errors='coerce')
 df['Transaction Date'] = pd.to_datetime(df['Transaction Date'], errors='coerce')
-
 
 mean_qty = df['Quantity'].mean()
 mean_price = df['Price Per Unit'].mean()
@@ -24,10 +26,51 @@ df['Transaction Date'] = df['Transaction Date'].ffill()
 
 df['Total Spent'] = df['Price Per Unit'] * df['Quantity']
 
+def clean_text(text):
+    if not isinstance(text, str):
+        return ""
+    text = re.sub(r'(.)\1+', r'\1\1', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+df['Item'] = df['Item'].apply(clean_text)
+df['Location'] = df['Location'].apply(clean_text)
+
+unique_items = df['Item'].unique()
+correction_map = {}
+
+for item in unique_items:
+    item_str = str(item)
+    if "take" in item_str.lower() or "unknown" in item_str.lower() or "unregistered" in item_str.lower():
+        correction_map[item] = item
+    else:
+        correction_map[item] = str(TextBlob(item_str).correct())
+df['Item'] = df['Item'].map(correction_map)
+
+global_fixes = {
+    'Take': 'Takeaway',
+    'Registered': 'Unknown',
+    'Unregistered': 'Unknown',
+    'ERROR': 'Unknown',
+    'UNKNOWN': 'Unknown',
+    'Unkown': 'Unknown'
+}
+df = df.replace(global_fixes)
+
+df['Price Per Unit'] = df['Price Per Unit'].round(2)
+df['Total Spent'] = df['Total Spent'].round(2)
+df['Quantity'] = df['Quantity'].round(2)
+df = df.reset_index(drop=True)
+
 print(df)
 print("---list columns----")
+print("---check data---")
+print(df.head())
 print(list(df.columns))
 print("----erros----")
 print(df.isnull().sum())
+print("---duplicates---")
+print(f"Total Duplicates: {df.duplicated().sum()}")
+print("--- Unique Items Found ---")
+print(df['Item'].unique())
 df.to_csv('cleaned_cafe_sales_data.csv', index=False)
 # %%
