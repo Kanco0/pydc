@@ -30,7 +30,7 @@ missing Date :
 For Transaction Date, I used ffill(). This method copies the previous valid date into the next missing row. For example, if transaction 100 happened on the 12th, transaction 101 is assumed to be on the same date.
 I sorted the dataset by Transaction ID before applying this method to ensure the dates follow a logical order.
 
-------------------------------------------------------------------------------------------
+<center>------------------------------------------------------------------------------------------</center>
 -DATE: 2026-01-15
 
 cleaning extra space :
@@ -52,9 +52,16 @@ this made sense because there is not spelling mistakes but there is another mist
 by that I just did what every one have to do if they have such a simple machine from data, and is it to use global.replace
 for its we know that we have 2 same purpose words wich are (ERROR, UNKNOWN)
 using it with only the string colunms well grant to make next data analysis affictive. 
-also I added for the values such as Price per unit, Total Spent, Quantity [.round2] for it well make it consume less token in the future
+
+also I added for the values such as Price per unit, Total Spent, Quantity [.round2] for it well make it consume less token in the future.
+
 Saving : 
+
 I used df.to_csv() to save the work I just did
+
+<br>
+<hr>
+<br>
 <h2 align="center">DIRTY DATA</h2>
 <p align="center">
   <img src="https://raw.githubusercontent.com/Kanco0/pydc/main/dc1/dirtydata.png" width="60%">
