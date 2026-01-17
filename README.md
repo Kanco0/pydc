@@ -1,6 +1,7 @@
 <p align="center"><b>2026-01-14</b></p>
 
-<h2>📌 Project Summary: Cafe Sales Data Cleaning</h2>
+<h2 align="center">📌 Project Summary: Cafe Sales Data Cleaning
+</h2>
 
 The Problem: The raw dataset from a cafe shop was messy and inconsistent, with missing values in Location, Payment Method, Item, Quantity, Price Per Unit, and Transaction Date. Extra spaces, inconsistent text formats, and minor errors made it unusable for analysis or reporting.
 
