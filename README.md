@@ -1,4 +1,4 @@
-<h1 aling="center">2026-01-14</h1>
+<p align="center"><b>2026-01-14</b></p>
 
 <h2>📌 Project Summary: Cafe Sales Data Cleaning</h2>
 
