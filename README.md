@@ -1,5 +1,33 @@
-Cafe Sales Data Cleaning Project
--DATE: 2026-01-14
+<h1 aling="center">2026-01-14</h1>
+
+<h2>📌 Project Summary: Cafe Sales Data Cleaning</h2>
+
+The Problem: The raw dataset from a cafe shop was messy and inconsistent, with missing values in Location, Payment Method, Item, Quantity, Price Per Unit, and Transaction Date. Extra spaces, inconsistent text formats, and minor errors made it unusable for analysis or reporting.
+
+The Fix: I cleaned the data using Python and Pandas by:
+
+Filling missing text fields (Location, Payment Method, Item) with “Unknown”
+
+Converting numeric columns (Quantity, Price Per Unit) and calculating Total Spent
+
+Filling missing Transaction Dates logically using forward-fill after sorting by Transaction ID
+
+Removing extra spaces, standardizing text case, and fixing duplicates in string columns
+
+Rounding numeric columns to 2 decimal places for consistency and efficiency
+
+The Result: A fully cleaned, analysis-ready dataset that allows the cafe to track sales, inventory, and revenue accurately. The dataset is structured, consistent, and ready for further business analysis or reporting.
+
+📁 Repository contains:
+
+raw_data/ → Original messy CSV file
+
+cleaned_data/ → Cleaned and standardized CSV
+
+scripts/ → Python scripts used for cleaning
+
+Before/After examples for quick reference
+<hr>
 
 Cleaned raw data of a cafe shop. Never knew what it contained. was so good to learn on it how to data clean.
 
